@@ -8,7 +8,6 @@ sleep 25s
 
 ros2 service call /runstop std_srvs/srv/SetBool data:\ false\ &
 
-ros2 launch yaml_tf_broadcaster tf_broadcast_helper.launch.py &
 ros2 launch shr_plan action_servers.launch.py > /tmp/action_server.txt 2>&1 &
 
 sleep 10s
