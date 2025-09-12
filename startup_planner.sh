@@ -30,6 +30,11 @@ export APIKEY=MISSING &&
 export cmd_vel="stretch/cmd_vel" &&
 
 export robot_pass="MISSING" &&
+export ROBOT_NAME="MISSING" &&
+export DISCORD_TOKEN="MISSING" &&
+export DISCORD_LOGGING_CHANNEL=MISSING &&
+export DISCORD_EMERGENCY_CHANNEL=1415364437782560871 &&
+
 
 source /opt/ros/humble/setup.bash &&
 source /home/hello-robot/smarthome_ws/install/setup.bash &&
