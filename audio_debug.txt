@@ -1,0 +1,10 @@
+pactl info
+
+alsa_output.usb-Generic_USB2.0_Device_20121120222016-00.analog-stereo
+alsa_input.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.multichannel-input
+
+pulseaudio -k && pulseaudio --start
+
+
+pactl set-default-sink alsa_output.usb-Generic_USB2.0_Device_20121120222016-00.analog-stereo
+pactl set-default-source alsa_input.usb-SEEED_ReSpeaker_4_Mic_Array__UAC1.0_-00.multichannel-input

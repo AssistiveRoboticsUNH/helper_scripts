@@ -8,16 +8,22 @@ print("Starting Robot Body")
 robot = stretch_body.robot.Robot()
 robot.startup()
 
+isHomed = robot.is_homed()
+print("Is robot homed? ", isHomed)
+if not isHomed:
+    print("Homing robot")
+    os.system('stretch_robot_home.py')
+
 print("Moving joints")
-# robot.arm.move_to(0)
+robot.arm.move_to(0)
 robot.end_of_arm.move_to('wrist_pitch', 0.5)
 robot.end_of_arm.move_to('wrist_roll', 0)
-robot.end_of_arm.move_to('wrist_yaw', 0)
-# robot.lift.move_to(0.7)
+robot.end_of_arm.move_to('wrist_yaw', 1.58)
+robot.lift.move_to(0.7)
 robot.push_command()
 
 
-time.sleep(2)
+time.sleep(4)
 
 print("Stopping Robot")
 robot.stop()
