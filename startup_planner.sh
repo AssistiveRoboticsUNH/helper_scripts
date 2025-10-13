@@ -30,6 +30,11 @@ export APIKEY=MISSING &&
 export cmd_vel="stretch/cmd_vel" &&
 
 export robot_pass="MISSING" &&
+export ROBOT_NAME="MISSING" &&
+export DISCORD_TOKEN="MISSING" &&
+export DISCORD_LOGGING_CHANNEL=MISSING &&
+export DISCORD_EMERGENCY_CHANNEL=1415364437782560871 &&
+
 
 source /opt/ros/humble/setup.bash &&
 source /home/hello-robot/smarthome_ws/install/setup.bash &&
@@ -37,9 +42,9 @@ source /home/hello-robot/ament_ws/install/setup.bash &&
 source /usr/share/colcon_cd/function/colcon_cd.sh &&
 
 echo "Starting processes..."
-python3 /home/hello-robot/handshake.py
+python3 /home/hello-robot/smarthome_ws/src/smart-home-robot/external/helper_script/handshake.py
 sleep 1s
-python3 /home/hello-robot/smarthome_ws/src/smart-home/reposition_display.py
+python3 /home/hello-robot/smarthome_ws/src/smart-home-robot/external/helper_script/reposition_display.py
 sleep 1s
 
 echo "Launching Realsense"
