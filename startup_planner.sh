@@ -41,6 +41,30 @@ source /home/hello-robot/smarthome_ws/install/setup.bash &&
 source /home/hello-robot/ament_ws/install/setup.bash &&
 source /usr/share/colcon_cd/function/colcon_cd.sh &&
 
+echo "Checking wifi ..."
+# Warn if connected to 2.4 GHz instead of 5 GHz
+
+# Network interface (change if needed)
+IFACE="wlo1"
+
+# Get frequency from iwconfig
+FREQ=$(iwconfig $IFACE 2>/dev/null | grep -o "Frequency:[0-9.]*" | cut -d: -f2)
+
+if [[ -z "$FREQ" ]]; then
+  echo "  Interface $IFACE not connected or Wi-Fi unavailable."
+  exit 1
+fi
+
+# Convert frequency to numeric (GHz)
+FREQ_NUM=$(echo "$FREQ" | awk '{print $1}')
+
+if (( $(echo "$FREQ_NUM < 3.0" | bc -l) )); then
+  echo " WARNING: Connected to 2.4 GHz Wi-Fi ($FREQ_NUM GHz) — expect latency spikes!"
+  echo " Tip: Switch to 5 GHz SSID (e.g., r1_5G)."
+else
+  echo " Connected to 5 GHz Wi-Fi ($FREQ_NUM GHz) — all good."
+fi
+
 echo "Starting processes..."
 python3 /home/hello-robot/smarthome_ws/src/smart-home-robot/external/helper_script/handshake.py
 sleep 1s
