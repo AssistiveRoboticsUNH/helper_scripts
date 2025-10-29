@@ -65,6 +65,9 @@ else
   echo " Connected to 5 GHz Wi-Fi ($FREQ_NUM GHz) — all good."
 fi
 
+echo "Setting external speaker "
+bash /home/hello-robot/smarthome_ws/src/smart-home-robot/external/helper_scripts/select_external_audio.sh
+
 echo "Starting processes..."
 python3 /home/hello-robot/smarthome_ws/src/smart-home-robot/external/helper_script/handshake.py
 sleep 1s
